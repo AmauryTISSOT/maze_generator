@@ -1,0 +1,11 @@
+.maze-cell {
+ border: 1cap solid black;
+}
+
+.grid-container {
+ display: grid;
+}
+
+body {
+ background-color: aqua;
+}
