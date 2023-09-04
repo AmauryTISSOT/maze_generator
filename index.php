@@ -8,22 +8,22 @@
     <title>Maze Generator</title>
 </head>
 <body>
-
-
-        <?php
+<?php
 function generateCell(int $numbHorizontalCell, int $numbVerticalCell)
 {
     echo "This is a $numbHorizontalCell by $numbVerticalCell maze";
 
     $totalCell = $numbHorizontalCell * $numbVerticalCell;
+    $gridWidth = $numbHorizontalCell * 50;
+    $gridHeight = $numbVerticalCell * 50;
 
-    echo "<div class='grid-container'>";
+    echo "<div class='grid-container' style='grid-template-columns: repeat($numbHorizontalCell, 1fr); grid-template-rows: repeat($numbVerticalCell, 1fr); width: {$gridWidth}px; height: {$gridHeight}px;'>";
     for ($i = 0; $i < $totalCell; $i++) {
         echo "<div class='maze-cell'>$i</div>";
     }
     echo "</div>";
-
 }
+
 generateCell(6, 6);
 ?>
 </body>
