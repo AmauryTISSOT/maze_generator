@@ -1,9 +1,13 @@
 .maze-cell {
- border: 1cap solid black;
+ border: 2px solid black;
+ text-align: center;
+ background-color: blue;
+ color: white;
 }
 
 .grid-container {
  display: grid;
+ border: 2px solid black;
 }
 
 body {
