@@ -9,6 +9,16 @@
 </head>
 <body>
 <?php
+function generateAssociativeArray(int $numberOfKeys)
+{
+    $array = [];
+    $wallArray = ["Top", "Bottom", "Left", "Right"];
+    for ($i = 0; $i <= $numberOfKeys; $i++) {
+        $array[$i] = $wallArray;
+    }
+    return $array;
+}
+
 function generateCell(int $numbHorizontalCell, int $numbVerticalCell)
 {
     echo "This is a $numbHorizontalCell by $numbVerticalCell maze";
@@ -22,6 +32,9 @@ function generateCell(int $numbHorizontalCell, int $numbVerticalCell)
         echo "<div class='maze-cell'>$i</div>";
     }
     echo "</div>";
+
+    $wall = generateAssociativeArray($totalCell);
+
 }
 
 generateCell(6, 6);
