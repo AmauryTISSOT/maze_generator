@@ -12,36 +12,10 @@
 
 require 'Cell.php';
 require 'DimensionalArray.php';
+require 'DisplayCell.php';
 
-function generateAssociativeArray(int $numberOfKeys)
-{
-    $array = [];
-    $wallArray = ["Top", "Bottom", "Left", "Right"];
-    for ($i = 0; $i <= $numberOfKeys; $i++) {
-        $array[$i] = $wallArray;
-    }
-    return $array;
-}
-
-function generateCell(int $numbHorizontalCell, int $numbVerticalCell)
-{
-    echo "This is a $numbHorizontalCell by $numbVerticalCell maze";
-
-    $totalCell = $numbHorizontalCell * $numbVerticalCell;
-    $gridWidth = $numbHorizontalCell * 50;
-    $gridHeight = $numbVerticalCell * 50;
-
-    echo "<div class='grid-container' style='grid-template-columns: repeat($numbHorizontalCell, 1fr); grid-template-rows: repeat($numbVerticalCell, 1fr); width: {$gridWidth}px; height: {$gridHeight}px;'>";
-    for ($i = 0; $i < $totalCell; $i++) {
-        echo "<div class='maze-cell'>$i</div>";
-    }
-    echo "</div>";
-
-    $wall = generateAssociativeArray($totalCell);
-
-}
-
-generateCell(6, 6);
+$cell = new DisplayCell();
+$cell->generateCell(6, 6);
 
 $grid = new DimensionalArray();
 for ($i = 0; $i < 3; $i++) {
