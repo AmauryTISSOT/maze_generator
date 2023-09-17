@@ -1,8 +1,9 @@
 <?php
-class DisplayCell
+class DisplayMaze
 {
     public $array = [];
     private $wallArray = ["Top", "Bottom", "Left", "Right"];
+    public $showCellNumber = false;
 
     public function generateAssociativeArray(int $numberOfKeys)
     {
@@ -22,7 +23,11 @@ class DisplayCell
 
         echo "<div class='grid-container' style='grid-template-columns: repeat($numbHorizontalCell, 1fr); grid-template-rows: repeat($numbVerticalCell, 1fr); width: {$gridWidth}px; height: {$gridHeight}px;'>";
         for ($i = 0; $i < $totalCell; $i++) {
-            echo "<div class='maze-cell'>$i</div>";
+            if ($this->showCellNumber) {
+                echo "<div class='maze-cell'>$i</div>";
+            } else {
+                echo "<div class='maze-cell'></div>";
+            }
         }
         echo "</div>";
 
