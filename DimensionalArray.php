@@ -40,4 +40,21 @@ class DimensionalArray
             }
         }
     }
+
+    public function setVisited($x, $y)
+    {
+        $this->array[$x][$y]->visited = true;
+    }
+
+    public function checkIfVisited($x, $y)
+    {
+        if ($this->array[$y][$x]->visited) {
+            echo "</br> </br>($x,$y) has been visited";
+
+            return true;
+        } else {
+            echo "</br>($x,$y) not visited";
+            return false;
+        }
+    }
 }
