@@ -12,41 +12,43 @@
 
 require 'Cell.php';
 require 'DimensionalArray.php';
-require 'DisplayCell.php';
+require 'DisplayMaze.php';
 
-$cell = new DisplayCell();
-$cell->generateCell(6, 6);
+$maze = new DisplayMaze();
+$maze->showCellNumber = true;
+$maze->generateCell(6, 6);
 
 $grid = new DimensionalArray();
+
 for ($i = 0; $i < 3; $i++) {
     echo "</br>";
     for ($j = 0; $j < 3; $j++) {
         $cell = new Cell($i, $j);
         $grid->array[$i][$j] = $cell;
-        $cell->getCordinate();
-
+        $cell->getCoordinate();
     }
+}
+
+function getNeighbourCells($x, $y, $objet)
+{
+    $top = $objet->array[$x - 1][$y];
+    $right = $objet->array[$x][$y + 1];
+    $bottom = $objet->array[$x + 1][$y];
+    $left = $objet->array[$x][$y - 1];
+
+    $top->visited = true;
+    $right->visited = true;
+    $bottom->visited = true;
+    $left->visited = true;
 }
 
 $grid->consoleLogArray();
 
-$grid->array[0][0]->visited = true;
+$grid->setVisited(0, 0);
 
-function checkIfVisited($arr, $x, $y)
-{
+$grid->checkIfVisited(0, 0);
 
-    if ($arr->array[$y][$x]->visited) {
-        echo "</br>($x,$y) has been visited";
-        return true;
-    } else {
-        echo "</br>($x,$y) not visited";
-        return false;
-    }
-}
-
-//echo $grid->array[0][0]->visited;
-
-checkIfVisited($grid, 1, 0);
+getNeighbourCells(1, 1, $grid);
 
 $grid->consoleLogArray();
 
