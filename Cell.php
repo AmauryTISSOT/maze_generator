@@ -12,7 +12,7 @@ class Cell
         $this->y = $y;
     }
 
-    public function getCordinate()
+    public function getCoordinate()
     {
         echo "($this->x, $this->y) ";
 
