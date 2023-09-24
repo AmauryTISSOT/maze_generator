@@ -27,10 +27,10 @@ class DisplayMaze
 
                 $backgroundColor = $this->array[$i][$j]->visited ? "red" : "";
 
-                echo "<div class='maze-cell' id ='$i-$j'style='grid-row:" . ($this->array[$i][$j]->x) + 1 . " / " . $i + 2 . "; grid-column:" . $this->array[$i][$j]->y + 1 . " / " . $j + 2 . "; background-color: $backgroundColor;
+                echo "<div class='maze-cell' id ='$i-$j'style='grid-row:" . ($this->array[$i][$j]->x) + 1 . " / " . $i + 2 . "; grid-column:" . $this->array[$i][$j]->y + 1 . " / " . $j + 2 . "; background-color: $backgroundColor; font-size: 14px;
                 ' >";
                 if ($this->showCellNumber) {
-                    echo "$i,$j";
+                    echo "X$i,Y$j";
                 }
                 echo "</div>";
             }
