@@ -86,4 +86,32 @@ class DimensionalArray
 
         return $arr;
     }
+
+    public function generateMaze($x, $y)
+    {
+        // set the current cell to visited
+        $this->setVisited($x, $y);
+
+        $neighborCellCoordinates = $this->getNeighborCellsCoordinates($x, $y);
+
+        $unvisitedNeighborCells = [];
+
+        // add coordinates of unvisited neighbor cells
+        for ($i = 0; $i < count($neighborCellCoordinates); $i++) {
+            if (!$this->array[$neighborCellCoordinates[$i][0]][$neighborCellCoordinates[$i][1]]->visited) {
+                $unvisitedNeighborCells[] = $neighborCellCoordinates[$i];
+            }
+        }
+
+        while (!empty($unvisitedNeighborCells)) {
+            $randomNumber = rand(0, count($unvisitedNeighborCells) - 1);
+            $randomCellCoordinate = $unvisitedNeighborCells[$randomNumber];
+            echo "<script>console.log('" . json_encode($randomCellCoordinate) . "')</script>";
+            unset($unvisitedNeighborCells[$randomNumber]);
+            $unvisitedNeighborCells = array_values($unvisitedNeighborCells);
+
+            //TODO: remove wall between current cell ($x, $y) and randomCellCoordinate
+        }
+
+    }
 }

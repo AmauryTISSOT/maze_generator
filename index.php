@@ -25,6 +25,8 @@ for ($i = 0; $i < 3; $i++) {
     }
 }
 
+$grid->generateMaze(1, 1);
+
 $maze = new DisplayMaze($grid->array);
 $maze->showCellNumber = true;
 $maze->showMaze();
