@@ -57,4 +57,33 @@ class DimensionalArray
             return false;
         }
     }
+
+    // set to private ?
+    public function getNeighborCellsCoordinates($x, $y)
+    {
+        $arr = [
+            [$x - 1, $y], // top
+            [$x, $y + 1], // right
+            [$x + 1, $y], // left
+            [$x, $y - 1], // bottom
+        ];
+
+        for ($i = 0; $i < count($arr); $i++) {
+            for ($j = 0; $j < count($arr[$i]); $j++) {
+                // remove the cell coordinate if x or y < 0
+                if ($arr[$i][$j] < 0) {
+                    unset($arr[$i]);
+                    $arr = array_values($arr);
+                }
+                // remove the cell coordinate if x or y > array length
+                if ($arr[$i][$j] > count($this->array) - 1) {
+                    unset($arr[$i]);
+                    $arr = array_values($arr);
+                }
+
+            }
+        }
+
+        return $arr;
+    }
 }
