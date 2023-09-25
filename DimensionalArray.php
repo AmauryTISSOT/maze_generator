@@ -46,6 +46,12 @@ class DimensionalArray
         $this->array[$x][$y]->visited = true;
     }
 
+    // set to private ?
+    public function removeWall($x1, $y1, $x2, $y2)
+    {
+        //TODO: find a way to removeWall between to cell
+    }
+
     public function checkIfVisited($x, $y)
     {
         if ($this->array[$y][$x]->visited) {
@@ -104,9 +110,14 @@ class DimensionalArray
         }
 
         while (!empty($unvisitedNeighborCells)) {
+            // select a random neighbor cell
             $randomNumber = rand(0, count($unvisitedNeighborCells) - 1);
             $randomCellCoordinate = $unvisitedNeighborCells[$randomNumber];
             echo "<script>console.log('" . json_encode($randomCellCoordinate) . "')</script>";
+
+            // for testing
+            $this->setVisited($randomCellCoordinate[0], $randomCellCoordinate[1]);
+
             unset($unvisitedNeighborCells[$randomNumber]);
             $unvisitedNeighborCells = array_values($unvisitedNeighborCells);
 
