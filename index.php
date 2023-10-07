@@ -30,7 +30,7 @@ $grid->generateMaze(1, 1);
 $maze = new DisplayMaze($grid->array);
 $maze->showCellNumber = true;
 $maze->showMaze();
-
+$grid->consoleLogArray();
 ?>
 </body>
 </html>
