@@ -46,10 +46,11 @@ class DimensionalArray
         $this->array[$x][$y]->visited = true;
     }
 
-    // set to private ?
-    public function removeWall($x1, $y1, $x2, $y2)
+    private function removeWall($current, $neighbor)
     {
-        //TODO: find a way to removeWall between to cell
+        //FIXME: don't change wall array correctly
+        $wallArrayIndex = $this->findWall($current, $neighbor);
+        $this->array[$current[0]][$current[1]]->wall[$wallArrayIndex] = false;
     }
 
     public function checkIfVisited($x, $y)
@@ -61,6 +62,29 @@ class DimensionalArray
         } else {
             echo "</br>($x,$y) not visited";
             return false;
+        }
+    }
+
+    public function findWall($current, $neighbor)
+    {
+        //top
+        if ($neighbor[0] === ($current[0] + 1)) {
+            return 0;
+        }
+
+        //right
+        if ($neighbor[1] === ($current[1] + 1)) {
+            return 1;
+        }
+
+        //bottom
+        if ($neighbor[0] === ($current[0] + 1)) {
+            return 2;
+        }
+
+        //left
+        if ($neighbor[1] === ($current[1] - 1)) {
+            return 3;
         }
     }
 
@@ -122,6 +146,7 @@ class DimensionalArray
             $unvisitedNeighborCells = array_values($unvisitedNeighborCells);
 
             //TODO: remove wall between current cell ($x, $y) and randomCellCoordinate
+            $this->removeWall([$x, $y], $randomCellCoordinate);
         }
 
     }
